@@ -18,12 +18,10 @@ const Index = () => {
     <Layout>
       <Head>
         <title>HoopsBot</title>
-        <meta name="description" content="A bot that serves up bad NBA takes."/>
-        <meta name="keywords" content="nba hot takes"/>
-        <meta name="author" content="Jim Burch"/>
       </Head>
       <h1>HoopsBot</h1>
-      <button onClick={increase}>There are {count} takes.</button>
+      <img src="../static/devinbooker.jpg" alt="Devin Armani Booker" height="250px" />
+      <button onClick={increase}>There are {count} takes</button>
 
       <style jsx>{`
         h1 {
