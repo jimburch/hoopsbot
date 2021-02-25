@@ -1,13 +1,12 @@
 {
   "name": "hoopsbot",
   "version": "1.0.0",
-  "description": "Generates a random NBA claim that may or may not be wrong.",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server",
-    "build": "webpack",
-    "watch": "webpack -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -21,13 +20,8 @@
   },
   "homepage": "https://github.com/JimBurch/hoopsbot#readme",
   "dependencies": {
-    "axios": "^0.21.1",
-    "babel": "^6.23.0",
-    "express": "^4.17.1",
-    "mysql": "^2.18.1",
-    "nodemon": "^2.0.7",
+    "next": "^10.0.7",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "webpack": "^5.24.1"
+    "react-dom": "^17.0.1"
   }
 }
