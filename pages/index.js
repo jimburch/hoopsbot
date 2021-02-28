@@ -10,8 +10,14 @@ const Index = () => {
       <Head>
         <title>HoopsBot</title>
       </Head>
-      <h1>HoopsBot</h1>
+      <div className="header">
+        <h1>HoopsBot <img className="fire" src="../static/fire.png" /></h1>
+
+      </div>
       <MadLibs />
+      <div className="github">
+        <a href="https://github.com/JimBurch/hoopsbot" target="_blank">See this project on GitHub</a>
+      </div>
     </div>
   )
 };
