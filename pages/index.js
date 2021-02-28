@@ -1,35 +1,24 @@
 import { useState, useEffect } from 'react';
-import Layout from '../components/Layout';
 import Head from 'next/head';
+import MadLibs from '../components/MadLibs';
 // import Link from 'next/link';
 
 const Index = () => {
-  const [ count, setCount ] = useState(0);
-
-  // useEffect(() => {
-  //   document.title = `${count} clicks`
-  // })
-
-  const increase = () => {
-    setCount(count + 1);
-  }
 
   return (
-    <Layout>
+    <div className="container">
       <Head>
         <title>HoopsBot</title>
       </Head>
-      <h1>HoopsBot</h1>
-      <img src="../static/devinbooker.jpg" alt="Devin Armani Booker" height="250px" />
-      <button onClick={increase}>There are {count} takes</button>
+      <div className="header">
+        <h1>HoopsBot <img className="fire" src="../static/fire.png" /></h1>
 
-      <style jsx>{`
-        h1 {
-          color: purple;
-          font-size: 35px;
-        }
-      `}</style>
-    </Layout>
+      </div>
+      <MadLibs />
+      <div className="github">
+        <a href="https://github.com/JimBurch/hoopsbot" target="_blank">See this project on GitHub</a>
+      </div>
+    </div>
   )
 };
 
