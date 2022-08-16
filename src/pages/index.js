@@ -17,6 +17,7 @@ const Home = () => {
 			<p>Generating white hot NBA takes using OpenAI</p>
 			<p>Take: {take}</p>
 			<button onClick={clickHandler}>Generate Take</button>
+			<button>Oh, That&apos;s Hot</button>
 		</div>
 	);
 };
