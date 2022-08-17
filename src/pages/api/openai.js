@@ -23,7 +23,9 @@ const handler = async (req, res) => {
 			stop: ['\\n'],
 		});
 
-		return res.status(200).json(completion.data.choices[0].text);
+		return res
+			.status(200)
+			.json(completion.data.choices[0].text.replace(/['"]+/g, ''));
 	} catch (error) {
 		if (error.response) {
 			console.log(error.response.status);
