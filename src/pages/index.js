@@ -2,37 +2,48 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Home = () => {
-	const [takeId, setTakeId] = useState();
+	const [savedTake, setSavedTake] = useState();
 	const [take, setTake] = useState();
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		generateTake();
 	}, []);
 
 	const generateTake = async () => {
-		const lottery = Math.floor(Math.random() * 5);
+		setLoading(true);
+		const lottery = Math.floor(Math.random() * 3);
 
 		if (lottery === 1) {
 			const response = await axios.get('/api/openai').then(response => {
-				setTakeId(null);
+				setSavedTake(null);
 				setTake(response.data);
 			});
 		} else {
 			const response = await axios.get('/api/takes').then(response => {
-				setTakeId(response.data.id);
+				setSavedTake(response.data);
 				setTake(response.data.take);
 			});
 		}
+		setLoading(false);
 	};
 
 	const saveTake = async heat => {
-		await axios.post('/api/takes', {
-			data: {
+		if (!savedTake) {
+			await axios.post('/api/takes', {
 				take: take,
-				hot: heat ? 1 : null,
-				cold: !heat ? 1 : null,
-			},
-		});
+				hot: heat ? 1 : 0,
+				cold: !heat ? 1 : 0,
+			});
+		} else {
+			await axios.put('/api/takes', {
+				id: savedTake.id,
+				take: savedTake.take,
+				hot: heat ? savedTake.hot + 1 : savedTake.hot,
+				cold: !heat ? savedTake.cold + 1 : savedTake.cold,
+			});
+		}
+		generateTake();
 	};
 
 	return (
@@ -40,12 +51,17 @@ const Home = () => {
 			<h1>Hoopsbot2</h1>
 			<p>Generating white hot NBA takes using OpenAI</p>
 			<p>Take: {take}</p>
-			{!takeId && take ? (
+			{!savedTake && take ? (
 				<p>This is a certified fresh take from OpenAI</p>
 			) : null}
-			<button onClick={generateTake}>Generate Take</button>
-			<button onClick={() => saveTake(true)}>Oh, That&apos;s Hot</button>
-			<button onClick={() => saveTake(false)}>That&apos;s Garbage</button>
+			{loading ? (
+				<p>A hot take is on the way</p>
+			) : (
+				<div>
+					<button onClick={() => saveTake(true)}>Oh, That&apos;s Hot</button>
+					<button onClick={() => saveTake(false)}>That&apos;s Garbage</button>
+				</div>
+			)}
 		</div>
 	);
 };

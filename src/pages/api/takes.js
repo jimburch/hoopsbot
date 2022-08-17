@@ -27,7 +27,7 @@ const handler = async (req, res) => {
 		}
 
 		if (req.method === 'POST') {
-			const { take, hot, cold, shares } = req.body.data;
+			const { take, hot, cold, shares } = req.body;
 			const post = await knex('takes')
 				.insert({
 					take: take.replace(/\r?\n|\r/g, ''),
@@ -40,6 +40,23 @@ const handler = async (req, res) => {
 				});
 
 			return res.status(201).json('Take posted!');
+		}
+
+		if (req.method === 'PUT') {
+			const { id, take, hot, cold, shares } = req.body;
+			const put = await knex('takes')
+				.update({
+					take: take.replace(/\r?\n|\r/g, ''),
+					hot,
+					cold,
+					shares,
+				})
+				.where({ id })
+				.catch(error => {
+					throw new Error(error);
+				});
+
+			return res.status(200).json('Take updated!');
 		}
 	} catch (error) {
 		if (error.response) {
