@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const LOTTERY_CHANCE = process.env.NEXT_PUBLIC_LOTTERY_CHANCE;
@@ -36,6 +36,7 @@ const Home = () => {
         take: take,
         hot: heat ? 1 : 0,
         cold: !heat ? 1 : 0,
+        shares: 0,
       });
     } else {
       await axios.put("/api/takes", {

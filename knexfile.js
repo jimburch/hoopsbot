@@ -1,17 +1,19 @@
 require("dotenv").config();
 const pg = require("pg");
 
-const { NODE_ENV } = process.env;
+const NODE_ENV = process.env.NODE_ENV;
+const DB_URL = process.env.DB_URL;
+console.log(NODE_ENV);
 
 module.exports = {
   development: {
     client: "pg",
-    connection: process.env.DB_URL,
+    connection: DB_URL,
   },
 
   staging: {
     client: "pg",
-    connection: process.env.DB_URL,
+    connection: DB_URL,
     ssl: NODE_ENV !== "development" && {
       sslmode: "require",
       rejectUnauthorized: false,
@@ -28,7 +30,7 @@ module.exports = {
 
   production: {
     client: "pg",
-    connection: process.env.DB_URL,
+    connection: DB_URL,
     ssl: NODE_ENV !== "development" && {
       sslmode: "require",
       rejectUnauthorized: false,

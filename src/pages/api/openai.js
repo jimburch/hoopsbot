@@ -21,7 +21,6 @@ const handler = async (req, res) => {
       temperature: 0.99,
       top_p: 1,
       best_of: 1,
-      stop: ["\\n"],
     });
 
     return res.status(200).json(completion.data.choices[0].text);
@@ -37,7 +36,3 @@ const handler = async (req, res) => {
 };
 
 export default handler;
-
-// https://github.com/openai/openai-node
-// https://beta.openai.com/docs/api-reference/introduction
-// https://nextjs.org/docs/api-routes/introduction
