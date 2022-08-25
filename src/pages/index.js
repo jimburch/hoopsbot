@@ -20,6 +20,7 @@ const Home = () => {
       const response = await axios.get("/api/openai").then((response) => {
         setSavedTake(null);
         setTake(response.data);
+        console.log(response.data);
       });
     } else {
       const response = await axios.get("/api/takes").then((response) => {
@@ -66,6 +67,15 @@ const Home = () => {
           <button onClick={() => saveTake(false)}>
             Naw, That&apos;s Garbage
           </button>
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURI(
+              take
+            )}&via=HoopsBotAI`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button>Fire, Tweet It</button>
+          </a>
         </div>
       )}
     </div>

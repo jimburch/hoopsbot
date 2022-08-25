@@ -23,6 +23,9 @@ exports.seed = async function (knex) {
     "Larry Bird is overrated.",
     "The only reason LeBron James is considered the best player in the world is because he is tall.",
     "If you can't beat em,join em. The @warriors are to the @nba what the @patriots are to the @nfl #dynasties",
+    "I'm sick of everyone acting like the NBA is the best basketball league in the world. I'm convinced that college basketball is WAY better.",
+    "The @NBA is a league of superstars. The best player on each team dominates the ball and the game. This is why the best team always wins.",
+    "The @NBA is rigged! The refs are out to get @TeamLeBron and @KingJames! This is a travesty! #FIXTHELEAGUE",
   ];
 
   const seedInserts = seedTakes.map((take) => ({
