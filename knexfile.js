@@ -3,7 +3,6 @@ const pg = require("pg");
 
 const NODE_ENV = process.env.NODE_ENV;
 const DB_URL = process.env.DB_URL;
-console.log(NODE_ENV);
 
 module.exports = {
   development: {
