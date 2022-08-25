@@ -23,7 +23,9 @@ const handler = async (req, res) => {
       best_of: 1,
     });
 
-    return res.status(200).json(completion.data.choices[0].text);
+    return res
+      .status(200)
+      .json(completion.data.choices[0].text.replace(/\n/g, ""));
   } catch (error) {
     if (error.response) {
       s;
