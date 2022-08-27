@@ -6,9 +6,9 @@ exports.up = async function (knex) {
   return await knex.schema.createTable("takes", (t) => {
     t.increments("id");
     t.string("take");
-    t.integer("hot");
-    t.integer("cold");
-    t.integer("shares");
+    t.integer("hot").defaultTo(0);
+    t.integer("cold").defaultTo(0);
+    t.integer("shares").defaultTo(0);
     t.timestamps(true, true);
   });
 };
