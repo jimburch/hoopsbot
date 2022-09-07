@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Header, Tweet } from "../components";
+import { Header, Tweet, NewTake } from "../components";
 import styles from "../styles/Home.module.css";
 import TakeContext from "../contexts/TakeContext";
 
@@ -37,8 +37,8 @@ const Home = () => {
       <div className={styles.root}>
         <Header />
         <Tweet />
+        <NewTake generateTake={generateTake} />
       </div>
-      <button onClick={generateTake}>New Take</button>
     </TakeContext.Provider>
   );
 };
