@@ -1,0 +1,19 @@
+.newTakeRoot {
+  margin-top: 16px;
+  background: inherit;
+  color: inherit;
+  font-weight: 600;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.newTakeRoot:hover {
+  background-color: lightgray;
+  color: #141d26;
+  cursor: pointer;
+}
+
+.newTakeRoot:focus:active {
+  background-color: white;
+}

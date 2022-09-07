@@ -30,9 +30,6 @@ exports.seed = async function (knex) {
 
   const seedInserts = seedTakes.map((take) => ({
     take,
-    hot: 0,
-    cold: 0,
-    shares: 0,
   }));
   // Deletes ALL existing entries
   await knex("takes").del();

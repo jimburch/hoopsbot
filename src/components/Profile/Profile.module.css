@@ -1,0 +1,22 @@
+.profileRoot {
+  display: flex;
+  flex-direction: row;
+  margin: 16px 0px 16px 0px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  margin-left: 8px;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.handle {
+  font-size: 15px;
+  color: gray;
+}
