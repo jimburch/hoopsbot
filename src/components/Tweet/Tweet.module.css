@@ -1,8 +1,24 @@
-.root {
+.tweetRoot {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 600px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 0px 20px 0px 20px;
 }
 
 .text {
   font-size: 23px;
+  font-weight: 200;
+}
+
+.time {
+  font-size: 14px;
+  color: gray;
+  margin-top: 16px;
+}
+
+.time a:hover {
+  text-decoration: underline;
 }

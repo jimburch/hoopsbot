@@ -6,7 +6,7 @@ const Stats = () => {
   const { take } = useContext(TakeContext);
 
   return (
-    <div className={styles.root}>
+    <div className={styles.statsRoot}>
       <div>
         <span className={styles.number}>{take.hot}</span>
         <span className={styles.text}>hot</span>

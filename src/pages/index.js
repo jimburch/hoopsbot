@@ -38,6 +38,7 @@ const Home = () => {
         <Header />
         <Tweet />
       </div>
+      <button onClick={generateTake}>New Take</button>
     </TakeContext.Provider>
   );
 };

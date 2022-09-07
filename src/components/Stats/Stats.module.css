@@ -1,9 +1,10 @@
-.root {
+.statsRoot {
   display: flex;
   flex-direction: row;
+  margin-top: 16px;
 }
 
-.root > * {
+.statsRoot > * {
   margin-right: 12px;
 }
 

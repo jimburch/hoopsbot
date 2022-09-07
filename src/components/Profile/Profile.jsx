@@ -5,7 +5,7 @@ import styles from "./Profile.module.css";
 
 const Profile = () => {
   return (
-    <div className={styles.root}>
+    <div className={styles.profileRoot}>
       <Image
         src={profilePic}
         alt="HoopsBot twitter profile pic"
