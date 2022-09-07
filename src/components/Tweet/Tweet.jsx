@@ -7,9 +7,9 @@ const Tweet = () => {
   const { take } = useContext(TakeContext);
 
   return (
-    <div>
+    <div className={styles.root}>
       <Profile />
-      <p>{take.take}</p>
+      <span className={styles.text}>{take.take}</span>
       <Stats take={take} />
       <Share take={take} />
     </div>

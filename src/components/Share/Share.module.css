@@ -1,0 +1,46 @@
+.shareRoot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.button {
+  background: inherit;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.hotButton:hover {
+  background: #720e3c;
+}
+
+.coldButton:hover {
+  background: #166499;
+}
+
+.sharedButton:hover {
+  background: #05422f;
+}
+
+.iconUnselected {
+  filter: invert(100%) sepia(0%) saturate(7440%) hue-rotate(33deg)
+    brightness(100%) contrast(104%);
+}
+
+.hotIconSelected {
+  filter: invert(26%) sepia(49%) saturate(6599%) hue-rotate(318deg)
+    brightness(96%) contrast(103%);
+}
+
+.coldIconSelected {
+  filter: invert(57%) sepia(96%) saturate(1289%) hue-rotate(177deg)
+    brightness(98%) contrast(108%);
+}
+
+.sharedIconSelected {
+  filter: invert(47%) sepia(96%) saturate(349%) hue-rotate(105deg)
+    brightness(101%) contrast(99%);
+}

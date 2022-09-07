@@ -1,0 +1,19 @@
+.root {
+  display: flex;
+  flex-direction: row;
+}
+
+.root > * {
+  margin-right: 12px;
+}
+
+.number {
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.text {
+  font-size: 14px;
+  color: gray;
+}

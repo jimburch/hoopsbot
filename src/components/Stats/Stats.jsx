@@ -6,10 +6,19 @@ const Stats = () => {
   const { take } = useContext(TakeContext);
 
   return (
-    <div>
-      <p>{`${take.hot} hot`}</p>
-      <p>{`${take.cold} cold`}</p>
-      <p>{`${take.shares} shares`}</p>
+    <div className={styles.root}>
+      <div>
+        <span className={styles.number}>{take.hot}</span>
+        <span className={styles.text}>hot</span>
+      </div>
+      <div>
+        <span className={styles.number}>{take.cold}</span>
+        <span className={styles.text}>cold</span>
+      </div>
+      <div>
+        <span className={styles.number}>{take.shares}</span>
+        <span className={styles.text}>shares</span>
+      </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import styles from "./Share.module.css";
 import TakeContext from "../../contexts/TakeContext";
+import Image from "next/image";
 
 const Share = () => {
   const [hot, setHot] = useState(false);
@@ -63,9 +64,31 @@ const Share = () => {
   };
 
   return (
-    <div>
-      <button onClick={setHotTake}>Hot</button>
-      <button onClick={setColdTake}>Cold</button>
+    <div className={styles.shareRoot}>
+      <button
+        className={`${styles.button} ${styles.hotButton}`}
+        onClick={setHotTake}
+      >
+        <Image
+          className={hot ? styles.hotIconSelected : styles.iconUnselected}
+          src="/hot.svg"
+          alt="hot icon"
+          height={35}
+          width={35}
+        />
+      </button>
+      <button
+        className={`${styles.button} ${styles.coldButton}`}
+        onClick={setColdTake}
+      >
+        <Image
+          className={cold ? styles.coldIconSelected : styles.iconUnselected}
+          src="/cold.svg"
+          alt="cold icon"
+          height={35}
+          width={35}
+        />
+      </button>
       <a
         href={`https://twitter.com/intent/tweet?text=${encodeURI(
           take.take
@@ -73,7 +96,20 @@ const Share = () => {
         target="_blank"
         rel="noreferrer"
       >
-        <button onClick={setSharedTake}>Share</button>
+        <button
+          className={`${styles.button} ${styles.sharedButton}`}
+          onClick={setSharedTake}
+        >
+          <Image
+            className={
+              shared ? styles.sharedIconSelected : styles.iconUnselected
+            }
+            src="/share.svg"
+            alt="share icon"
+            height={35}
+            width={35}
+          />
+        </button>
       </a>
     </div>
   );
