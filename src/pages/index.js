@@ -21,22 +21,30 @@ const Home = () => {
     if (lottery === 1) {
       const response = await axios.get("/api/openai").then((response) => {
         setTake(response.data);
+        setLoading(false);
       });
     } else {
       const response = await axios.get("/api/takes").then((response) => {
         setTake(response.data);
+        setTimeout(() => {
+          setLoading(false);
+        }, "2000");
       });
     }
-    setLoading(false);
   };
-
-  if (loading) return <div>loading</div>;
 
   return (
     <TakeContext.Provider value={{ take, setTake }}>
       <div className={styles.root}>
         <Header />
-        <Tweet />
+        {loading ? (
+          <div
+            className={styles.ldsHourglass}
+            style={{ margin: "50px 0px 50px 0px" }}
+          />
+        ) : (
+          <Tweet />
+        )}
         <NewTake generateTake={generateTake} />
       </div>
     </TakeContext.Provider>
