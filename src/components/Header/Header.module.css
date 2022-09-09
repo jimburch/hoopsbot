@@ -1,6 +1,10 @@
 .headerRoot {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   text-align: center;
+}
+
+.headerRoot h1 {
+  margin-bottom: 0px;
 }
