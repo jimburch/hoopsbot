@@ -68,6 +68,7 @@ const Share = () => {
       <button
         className={`${styles.button} ${styles.hotButton}`}
         onClick={setHotTake}
+        title="Rate This Take Hot"
       >
         <Image
           className={hot ? styles.hotIconSelected : styles.iconUnselected}
@@ -80,6 +81,7 @@ const Share = () => {
       <button
         className={`${styles.button} ${styles.coldButton}`}
         onClick={setColdTake}
+        title="Rate This Take Cold"
       >
         <Image
           className={cold ? styles.coldIconSelected : styles.iconUnselected}
@@ -99,6 +101,7 @@ const Share = () => {
         <button
           className={`${styles.button} ${styles.sharedButton}`}
           onClick={setSharedTake}
+          title="Share This Take On Twitter"
         >
           <Image
             className={
