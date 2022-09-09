@@ -22,3 +22,9 @@
 .time a:hover {
   text-decoration: underline;
 }
+
+@media only screen and (max-width: 600px) {
+  .tweetRoot {
+    border: none;
+  }
+}
