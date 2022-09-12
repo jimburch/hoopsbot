@@ -34,4 +34,5 @@ exports.seed = async function (knex) {
   // Deletes ALL existing entries
   await knex("takes").del();
   await knex("takes").insert(seedInserts);
+  console.log(`${seedTakes.length} takes seeded to db`);
 };

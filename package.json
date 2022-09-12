@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "db:migrate": "yarn knex migrate:latest --knexfile knexfile.js",
-    "db:populate": "node ./seeds/populate_takes_table.js"
+    "db:seed": "yarn knex seed:run"
   },
   "dependencies": {
     "axios": "^0.27.2",
