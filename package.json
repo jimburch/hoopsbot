@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && yarn db:migrate",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:migrate": "yarn knex migrate:latest --knexfile knexfile.js",
+    "db:populate": "node ./seeds/populate_takes_table.js"
   },
   "dependencies": {
     "axios": "^0.27.2",
