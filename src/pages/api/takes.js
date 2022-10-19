@@ -1,61 +1,30 @@
-import knex from "../../data/db.js";
+import axios from "axios";
+
+const API_URL = process.env.API_URL;
+const API_BEARER_TOKEN = process.env.API_BEARER_TOKEN;
 
 const handler = async (req, res) => {
   try {
     if (req.method === "GET") {
-      const count = await knex("takes")
-        .count()
-        .then((response) => {
-          return response[0].count;
+      const response = await axios
+        .get(`${API_URL}/hoopsbot/random`, {
+          headers: { Authorization: `bearer ${API_BEARER_TOKEN}` },
         })
         .catch((error) => {
           throw new Error(error);
         });
-
-      const request = await knex("takes")
-        .select()
-        .offset(Math.floor(Math.random() * count))
-        .limit(1)
-        .then((response) => {
-          return response[0];
-        })
-        .catch((error) => {
-          throw new Error(error);
-        });
-
-      return res.status(200).send(request);
-    }
-
-    if (req.method === "POST") {
-      const { take, hot, cold, shares } = req.body;
-      const post = await knex("takes")
-        .insert({
-          take: take.replace(/\r?\n|\r/g, ""),
-          hot,
-          cold,
-          shares,
-        })
-        .catch((error) => {
-          throw new Error(error);
-        });
-
-      return res.status(201).json("Take posted!");
+      return res.status(200).json(response.data);
     }
 
     if (req.method === "PUT") {
-      const { id, take, hot, cold, shares, updated_at } = req.body;
-      const put = await knex("takes")
-        .update({
-          take: take.replace(/\r?\n|\r/g, ""),
-          hot,
-          cold,
-          shares,
-          updated_at,
-        })
-        .where({ id })
-        .catch((error) => {
-          throw new Error(error);
-        });
+      const { id } = req.body;
+      const response = await axios.put(
+        `${API_URL}/hoopsbot/update/${id}`,
+        req.body,
+        {
+          headers: { Authorization: `bearer ${API_BEARER_TOKEN}` },
+        }
+      );
 
       return res.status(200).json("Take updated!");
     }
