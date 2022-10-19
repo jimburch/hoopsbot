@@ -4,11 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && yarn db:migrate",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "db:migrate": "yarn knex migrate:latest --knexfile knexfile.js",
-    "db:seed": "yarn knex seed:run"
+    "lint": "next lint"
   },
   "dependencies": {
     "axios": "^0.27.2",
