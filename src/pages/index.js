@@ -36,7 +36,7 @@ const Home = ({ newTake }) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await axios.get(`${process.env.API_URL}/hoopsbot/random`, {
     headers: { Authorization: `bearer ${process.env.API_BEARER_TOKEN}` },
   });
