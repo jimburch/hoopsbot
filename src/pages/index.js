@@ -4,13 +4,9 @@ import { Header, Tweet, NewTake } from "../components";
 import styles from "../styles/Home.module.css";
 import TakeContext from "../contexts/TakeContext";
 
-const Home = () => {
-  const [take, setTake] = useState();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    generateTake();
-  }, []);
+const Home = ({ newTake }) => {
+  const [take, setTake] = useState(newTake);
+  const [loading, setLoading] = useState(false);
 
   const generateTake = async () => {
     setLoading(true);
@@ -18,7 +14,7 @@ const Home = () => {
       setTake(response.data);
       setTimeout(() => {
         setLoading(false);
-      }, "1500");
+      }, "1000");
     });
   };
 
@@ -38,6 +34,18 @@ const Home = () => {
       </div>
     </TakeContext.Provider>
   );
+};
+
+export const getStaticProps = async () => {
+  const res = await axios.get(`${process.env.API_URL}/hoopsbot/random`, {
+    headers: { Authorization: `bearer ${process.env.API_BEARER_TOKEN}` },
+  });
+
+  return {
+    props: {
+      newTake: res.data,
+    },
+  };
 };
 
 export default Home;
