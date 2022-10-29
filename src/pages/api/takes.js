@@ -7,15 +7,17 @@ const handler = async (req, res) => {
   try {
     if (req.method === "GET") {
       console.log("API request triggered");
-      const response = await axios
-        .get(`${API_URL}/hoopsbot/random`, {
-          headers: { Authorization: `bearer ${API_BEARER_TOKEN}` },
-        })
+      const response = await fetch(`${API_URL}/hoopsbot/random`, {
+        headers: new Headers({
+          Authorization: `bearer ${API_BEARER_TOKEN}`,
+        }),
+      })
+        .then((response) => response.json())
         .catch((error) => {
           throw new Error(error);
         });
-      console.log("API response: ", response.data);
-      return res.status(200).json(response.data);
+      console.log("API response: ", response);
+      return res.status(200).json(response);
     }
 
     if (req.method === "PUT") {
