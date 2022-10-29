@@ -16,6 +16,7 @@ const Home = () => {
     await fetch("/api/takes")
       .then((response) => response.json())
       .then((data) => {
+        console.log("Front end data: ", data);
         setTake(data);
         setTimeout(() => {
           setLoading(false);
