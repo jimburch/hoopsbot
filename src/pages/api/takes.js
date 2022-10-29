@@ -6,7 +6,7 @@ const API_BEARER_TOKEN = process.env.API_BEARER_TOKEN;
 const handler = async (req, res) => {
   try {
     if (req.method === "GET") {
-      console.log('API request triggered')
+      console.log("API request triggered");
       const response = await axios
         .get(`${API_URL}/hoopsbot/random`, {
           headers: { Authorization: `bearer ${API_BEARER_TOKEN}` },
@@ -14,7 +14,6 @@ const handler = async (req, res) => {
         .catch((error) => {
           throw new Error(error);
         });
-      console.log("backend data: ", response.data);")
       return res.status(200).json(response.data);
     }
 
