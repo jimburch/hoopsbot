@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Header, Tweet, NewTake } from "../components";
 import styles from "../styles/Home.module.css";
 import TakeContext from "../contexts/TakeContext";
 
-const Home = ({ newTake }) => {
-  const [take, setTake] = useState(newTake);
-  const [loading, setLoading] = useState(false);
+const Home = () => {
+  const [take, setTake] = useState();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    generateTake();
+  }, []);
 
   const generateTake = async () => {
     setLoading(true);
-    await axios.get("/api/takes").then((response) => {
-      setTake(response.data);
-      setTimeout(() => {
-        setLoading(false);
-      }, "1000");
-    });
+    await fetch("/api/takes")
+      .then((response) => response.json())
+      .then((data) => {
+        setTake(data);
+        setTimeout(() => {
+          setLoading(false);
+        }, "1000");
+      });
   };
 
   return (
@@ -34,18 +39,6 @@ const Home = ({ newTake }) => {
       </div>
     </TakeContext.Provider>
   );
-};
-
-export const getStaticProps = async () => {
-  const res = await axios.get(`${process.env.API_URL}/hoopsbot/random`, {
-    headers: { Authorization: `bearer ${process.env.API_BEARER_TOKEN}` },
-  });
-
-  return {
-    props: {
-      newTake: res.data,
-    },
-  };
 };
 
 export default Home;
