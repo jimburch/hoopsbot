@@ -14,6 +14,7 @@ const handler = async (req, res) => {
         .catch((error) => {
           throw new Error(error);
         });
+      console.log("API response: ", response.data);
       return res.status(200).json(response.data);
     }
 
