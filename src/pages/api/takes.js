@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_URL = process.env.API_URL;
-const API_BEARER_TOKEN = process.env.API_BEARER_TOKEN;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_BEARER_TOKEN = process.env.NEXT_PUBLIC_API_BEARER_TOKEN;
 
 const handler = async (req, res) => {
   try {
