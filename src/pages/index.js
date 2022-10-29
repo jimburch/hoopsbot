@@ -14,18 +14,18 @@ const Home = ({ newTake }) => {
   //   generateTake();
   // }, []);
 
-  const generateTake = async () => {
-    setLoading(true);
-    await fetch("/api/takes")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Front end data: ", data);
-        setTake(data);
-        setTimeout(() => {
-          setLoading(false);
-        }, "1000");
-      });
-  };
+  // const generateTake = async () => {
+  //   setLoading(true);
+  //   await fetch("/api/takes")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log("Front end data: ", data);
+  //       setTake(data);
+  //       setTimeout(() => {
+  //         setLoading(false);
+  //       }, "1000");
+  //     });
+  // };
 
   return (
     <TakeContext.Provider value={{ take, setTake }}>
@@ -39,7 +39,7 @@ const Home = ({ newTake }) => {
         ) : (
           <Tweet />
         )}
-        <NewTake generateTake={generateTake} />
+        {/* <NewTake generateTake={generateTake} /> */}
       </div>
     </TakeContext.Provider>
   );
@@ -47,9 +47,9 @@ const Home = ({ newTake }) => {
 
 export const getStaticProps = async () => {
   const response = await fetch(`${API_URL}/hoopsbot/random`, {
-    headers: new Headers({
+    headers: {
       Authorization: `bearer ${API_BEARER_TOKEN}`,
-    }),
+    },
   })
     .then((response) => response.json())
     .catch((error) => {
