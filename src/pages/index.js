@@ -3,13 +3,16 @@ import { Header, Tweet, NewTake } from "../components";
 import styles from "../styles/Home.module.css";
 import TakeContext from "../contexts/TakeContext";
 
-const Home = () => {
-  const [take, setTake] = useState();
-  const [loading, setLoading] = useState(true);
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_BEARER_TOKEN = process.env.NEXT_PUBLIC_API_BEARER_TOKEN;
 
-  useEffect(() => {
-    generateTake();
-  }, []);
+const Home = ({ newTake }) => {
+  const [take, setTake] = useState(newTake);
+  const [loading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   generateTake();
+  // }, []);
 
   const generateTake = async () => {
     setLoading(true);
@@ -40,6 +43,24 @@ const Home = () => {
       </div>
     </TakeContext.Provider>
   );
+};
+
+export const getStaticProps = async () => {
+  const response = await fetch(`${API_URL}/hoopsbot/random`, {
+    headers: new Headers({
+      Authorization: `bearer ${API_BEARER_TOKEN}`,
+    }),
+  })
+    .then((response) => response.json())
+    .catch((error) => {
+      throw new Error(error);
+    });
+
+  return {
+    props: {
+      newTake: response,
+    },
+  };
 };
 
 export default Home;
